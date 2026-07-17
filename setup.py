@@ -2,7 +2,7 @@ import os
 from setuptools import setup, find_packages
 from glob import glob
 
-package_name = 'hex_ros_arm_traj_demo'
+package_name = 'hex_ros_arm_replay'
 
 
 def get_files(tar: str, src: str):
@@ -21,7 +21,7 @@ def get_files(tar: str, src: str):
 
 setup(
     name=package_name,
-    version='0.0.0',
+    version='0.1.0',
     packages=find_packages(),
     data_files=[
         ('share/ament_index/resource_index/packages',
@@ -29,6 +29,7 @@ setup(
         ('share/' + package_name, ['package.xml']),
         *get_files('share/' + package_name, "launch/ros2"),
         *get_files('share/' + package_name + '/config/ros2', "config/ros2"),
+        *get_files('share/' + package_name + '/jsons', "jsons"),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
@@ -38,7 +39,7 @@ setup(
     license='Apache-2.0',
     entry_points={
         'console_scripts': [
-            'arm_traj = hex_ros_arm_traj_demo.arm_comp:main',
+            'arm_replay = hex_ros_arm_replay.arm_replay:main',
         ],
     },
 )

@@ -18,7 +18,7 @@ from launch_ros.substitutions import FindPackageShare
 def generate_launch_description():
     sim_pkg_path = FindPackageShare('hex_ros_sim_archer_y6')
     keyboard_pkg_path = FindPackageShare('hex_ros_teleop_keyboard')
-    comp_pkg_path = FindPackageShare('hex_ros_arm_traj_demo')
+    traj_pkg_path = FindPackageShare('hex_ros_arm_replay')
 
     # args
     viewer_arg = DeclareLaunchArgument(
@@ -48,15 +48,15 @@ def generate_launch_description():
             PathJoinSubstitution(
                 [keyboard_pkg_path, "teleop_keyboard.launch.py"])), )
 
-    # gravity compensation node
-    comp_launch = IncludeLaunchDescription(
+    # arm trajectory node
+    traj_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
-            PathJoinSubstitution([comp_pkg_path, "arm_comp.launch.py"])), )
+            PathJoinSubstitution([traj_pkg_path, "arm_replay.launch.py"])), )
 
     return LaunchDescription([
         viewer_arg,
         rviz_arg,
         sim_launch,
         keyboard_launch,
-        comp_launch,
+        traj_launch,
     ])
