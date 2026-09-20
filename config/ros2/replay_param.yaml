@@ -1,4 +1,4 @@
-arm_replay:
+/**/arm_replay:
   ros__parameters:
     ### ros parameters
     rate_ros: 1000.0
@@ -18,7 +18,7 @@ arm_replay:
 
     # task_config
     end_position: [0.0, -1.5, 3.0, 0.0, 0.0, 0.0]
-    expected_time: 5.0
+    expected_time: 2.0
 
     ### waypoints
     waypoints_path: ""
